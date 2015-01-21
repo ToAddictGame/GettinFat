@@ -25,6 +25,7 @@ package
 	import starling.utils.RectangleUtil;
 	import starling.utils.ScaleMode;
 	
+	//bu
 	
 	[SWF(frameRate="60",width="100%",height="100%",backgroundColor = "0x333333")]
 	public class SmashThem extends Sprite
