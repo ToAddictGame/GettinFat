@@ -22,7 +22,6 @@ package Screen
 	import starling.events.KeyboardEvent;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
 	import starling.utils.deg2rad;
 	
 	public class InGame extends Sprite
@@ -35,7 +34,7 @@ package Screen
 		
 		
 		//OBJECTS
-		private var character:MainCharacter;		
+		public static var character:MainCharacter;		
 		private var bubble:Bubble;		
 		private var food:Food;
 		
@@ -221,7 +220,7 @@ package Screen
 			if(foodArray.length <= foodMaxNumber)
 			{			
 				var number:int = (Math.random() *4)+1;
-				var speed:Number = Math.random() + 6;
+				var speed:Number = (Math.random() *5)+ 5;
 		
 				food = new Food(number,speed);
 				

@@ -61,9 +61,9 @@ package
 		
 		private function handleChangeScreen(e:NavigationEvent):void
 		{
-			trace("TENHO K FAZER KK MERDA" , e.params.id);
-			
-			switch(e.params.id)
+			menuScreen.disposeTemporarily();
+			inGameScreen.init();
+			/*switch(e.params.id)
 			{
 				case "tut":
 					menuScreen.disposeTemporarily();
@@ -73,7 +73,7 @@ package
 					tutGameScreen.disposeTemporarily();
 					inGameScreen.init();
 					break;
-			}
+			}*/
 			
 			
 		}

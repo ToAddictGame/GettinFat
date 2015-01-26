@@ -8,6 +8,8 @@ package objects
 	
 	import flash.geom.Point;
 	
+	import Screen.InGame;
+	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -19,6 +21,8 @@ package objects
 		private var bugNumber:int;
 		private var speed:int;
 		public var beenHit:Boolean;
+		
+		
 		
 		public function Food(_number:int, _speed:int = 2)
 		{
@@ -44,16 +48,59 @@ package objects
 		
 		private function MoveBug():void
 		{
+			var xPos:int;
+			var yPos:int;
+			
 			if(beenHit == false){
-				var xPos:int = Math.floor(Math.random() * (stage.stageWidth - 0 + 1)) + 0;
-				var yPos:int = Math.floor(Math.random() * (stage.stageHeight - 0 + 1)) + 0;			
+				
+				switch(this.bugNumber)
+				{
+					//RANDOM MOVEMENT
+					case 1:
+						xPos = Math.floor(Math.random() * (stage.stageWidth - 0 + 1)) + 0;
+						yPos = Math.floor(Math.random() * (stage.stageHeight - 0 + 1)) + 0;			
+						
+								
+								
+						break;
+					
+					//PROXIMITY MOVEMENT
+					case 2:
+						xPos = 0;
+						yPos = 0;
+						break;
+					
+					//STRAUGHT TO CHARACTER
+					case 3:
+						
+						//addEventListener(Event.ENTER_FRAME, chaseCharacter);
+						xPos = InGame.character.x;
+						yPos = InGame.character.y;
+						
+						break;
+					
+					//CROSS STAGE
+					case 4:
+						xPos = 0;
+						yPos = 0;
+						break;
+				}
+				
 				var disX:int = xPos - this.x;
 				var disY:int = yPos  - this.y;;
-				var radiansDegrees:Number = Math.atan2(disY,disX);
-				this.rotation = radiansDegrees+deg2rad(90);			
 				
+				var radiansDegrees:Number = Math.atan2(disY,disX);
+				this.rotation = radiansDegrees+deg2rad(90);	
 				TweenLite.to(this,speed,{x: xPos, y: yPos, ease:Linear.easeNone, onComplete:MoveBug});	
 			}			
+		}
+		
+		private function chaseCharacter(e:Event):void
+		{
+			this.x = this.x + ((InGame.character.x - this.x)/50);
+			this.y = this.y + ((InGame.character.y - this.y)/50);
+			var radiansDegrees:Number = Math.atan2(InGame.character.x,InGame.character.y);
+			this.rotation = radiansDegrees+deg2rad(90);
 		}
 		
 		public function moveToMouth(location:Point):void

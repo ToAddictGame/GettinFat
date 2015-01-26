@@ -2,28 +2,16 @@ package
 {
 	import com.chartboost.plugin.air.Chartboost;
 	import com.chartboost.plugin.air.ChartboostEvent;
-	import com.demonsters.debugger.MonsterDebugger;
 	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
-	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.system.Capabilities;
 	
 	import Screen.InGame;
-	import Screen.Menu;
-	import Screen.TutGame;
-	
-	import feathers.layout.ViewPortBounds;
 	
 	import starling.core.Starling;
-	import starling.core.starling_internal;
-	import starling.display.Stage;
-	import starling.events.Event;
-	import starling.utils.RectangleUtil;
-	import starling.utils.ScaleMode;
 	
 	//bu
 	
@@ -44,16 +32,16 @@ package
 			
 			
 			//ON DEVICE
-			var screenWidth:int = Capabilities.screenResolutionX;
+		/*	var screenWidth:int = Capabilities.screenResolutionX;
 			var screenHeight:int = Capabilities.screenResolutionY;
-			var viewPort:Rectangle = new Rectangle(0,0,screenWidth,screenHeight);
+			var viewPort:Rectangle = new Rectangle(0,0,screenWidth,screenHeight);*/
 			
 			
 			//ON AIR DEBUG
-			/*var screenWidth:int = stage.fullScreenWidth;
+			var screenWidth:int = stage.fullScreenWidth;
 			var screenHeight:int = stage.fullScreenHeight;
 			var viewPort:Rectangle = new Rectangle(0,0,screenWidth,screenHeight);
-			*/
+			
 			
 			_starling = new Starling(Game,stage,viewPort);
 			_starling.antiAliasing = 1;
